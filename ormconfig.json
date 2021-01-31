@@ -4,7 +4,7 @@
   "port": 5432,
   "username": "postgres",
   "password": "vizio1",
-  "database": "test",
+  "database": "bandapi",
   "synchronize": true,
   "logging": false,
   "entities": ["src/entity/**/*.ts"],
