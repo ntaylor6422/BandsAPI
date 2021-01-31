@@ -1,10 +1,17 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  BaseEntity,
+} from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
 import { Comment } from './Comment';
 
 @Entity('bands')
-export class Band {
-  @Field(() => ID)
+@ObjectType()
+export default class Band extends BaseEntity {
+  @Field(() => String)
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -12,7 +19,8 @@ export class Band {
   @Column()
   bandName: string;
 
-  @OneToMany((type) => Comment, (comment) => comment.band) comments: Comment[];
+  @OneToMany(() => Comment, (comment) => comment.band)
+  comments: Comment[];
 
   @Field(() => Date)
   @Column()

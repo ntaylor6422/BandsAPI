@@ -9,8 +9,9 @@ import { ObjectType, Field, ID } from 'type-graphql';
 import { Band } from './Band';
 
 @Entity('comments')
-export class Comment extends BaseEntity {
-  @Field(() => ID)
+@ObjectType()
+export default class Comment extends BaseEntity {
+  @Field(() => String)
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -18,7 +19,8 @@ export class Comment extends BaseEntity {
   @Column()
   comment: string;
 
-  @ManyToOne((type) => Band, (band) => band.comments) band: Band;
+  @ManyToOne(() => Band, (band) => band.comments)
+  band: Band;
 
   @Field(() => Date)
   @Column()

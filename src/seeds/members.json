@@ -1,0 +1,8 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Lennon",
+    "band": ["The Beatles", "John Lennon"],
+    "birthDate": "1940-10-09"
+  }
+]

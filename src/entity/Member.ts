@@ -11,8 +11,8 @@ import { Band } from './Band';
 
 @Entity('members')
 @ObjectType()
-export class Member extends BaseEntity {
-  @Field(() => ID)
+export default class Member extends BaseEntity {
+  @Field(() => String)
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -30,5 +30,5 @@ export class Member extends BaseEntity {
 
   @Field(() => Date)
   @Column()
-  dateFormed: Date;
+  birthDate: Date;
 }

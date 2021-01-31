@@ -1,6 +1,7 @@
 {
   "name": "cc17api",
   "version": "0.0.1",
+  "type": "module",
   "description": "Awesome project developed with TypeORM.",
   "devDependencies": {
     "@types/node": "^8.0.29",
@@ -14,9 +15,12 @@
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.10",
     "type-graphql": "^1.1.1",
-    "typeorm": "0.2.30"
+    "typeorm": "0.2.30",
+    "typeorm-seeding": "^1.6.1"
   },
   "scripts": {
-    "start": "nodemon -w src --ext ts --exec ts-node src/index.ts"
+    "start": "nodemon -w src --ext ts --exec ts-node src/index.ts",
+    "typeorm:migration:gen": "ts-node ./node_modules/typeorm/cli.js migration:generate --name",
+    "typeorm:migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
   }
 }
