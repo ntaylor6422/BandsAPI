@@ -1,7 +1,6 @@
 {
   "name": "cc17api",
   "version": "0.0.1",
-  "type": "module",
   "description": "Awesome project developed with TypeORM.",
   "devDependencies": {
     "@types/node": "^8.0.29",

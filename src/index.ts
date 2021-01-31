@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { ApolloServer } from 'apollo-server';
-import { BandResolver } from './resolvers/BandResolver';
+import BandResolver from './resolvers/BandResolver';
 import { buildSchema } from 'type-graphql';
 
 async function main() {

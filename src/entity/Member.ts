@@ -6,8 +6,8 @@ import {
   JoinTable,
   ManyToMany,
 } from 'typeorm';
-import { ObjectType, Field, ID } from 'type-graphql';
-import { Band } from './Band';
+import { ObjectType, Field } from 'type-graphql';
+import Band from './Band';
 
 @Entity('members')
 @ObjectType()
@@ -23,6 +23,10 @@ export default class Member extends BaseEntity {
   @Field(() => String)
   @Column()
   lastName: string;
+
+  @Field(() => String)
+  @Column()
+  instrument: string;
 
   @ManyToMany((type) => Band)
   @JoinTable()

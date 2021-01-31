@@ -5,8 +5,8 @@ import {
   OneToMany,
   BaseEntity,
 } from 'typeorm';
-import { ObjectType, Field, ID } from 'type-graphql';
-import { Comment } from './Comment';
+import { ObjectType, Field } from 'type-graphql';
+import Comment from './Comment';
 
 @Entity('bands')
 @ObjectType()
