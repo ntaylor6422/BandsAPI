@@ -1,13 +1,12 @@
-import CreateBandInput from '../inputs/CreateBandInput';
 import { Resolver, Query, Mutation, Arg } from 'type-graphql';
-import Band from '../entity/Band';
-import UpdateBandInput from '../inputs/UpdateBandInput';
+import CreateCommentInput from '../inputs/CreateCommentInput';
+import Comment from '../entity/Comment';
 
 @Resolver()
-export default class BandResolver {
-  @Query(() => [Band])
-  bands() {
-    return Band.find();
+export default class CommentResolver {
+  @Query(() => [Comment])
+  comments() {
+    return Comment.find();
   }
 
   @Query(() => Band)

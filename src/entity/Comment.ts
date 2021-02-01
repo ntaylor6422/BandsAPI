@@ -15,6 +15,10 @@ export default class Comment extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Field(() => Number)
+  @Column()
+  rating: number;
+
   @Field(() => String)
   @Column()
   comment: string;
@@ -24,5 +28,5 @@ export default class Comment extends BaseEntity {
 
   @Field(() => Date)
   @Column()
-  dateFormed: Date;
+  dateCommented: Date;
 }

@@ -1,5 +1,5 @@
 import { Factory, Seeder } from 'typeorm-seeding';
-import { Connection } from 'typeorm-connection';
+import { Connection } from 'typeorm';
 import Band from '../entity/Band';
 const bands = require('./bands.json');
 
@@ -9,7 +9,12 @@ export default class CreateBands implements Seeder {
       .createQueryBuilder()
       .insert()
       .into(Band)
-      .values([{}])
+      .values([
+        {
+          bandName: bands[0].bandName,
+          dateFormed: new Date(bands[0].dateFormed),
+        },
+      ])
       .execute();
   }
 }
