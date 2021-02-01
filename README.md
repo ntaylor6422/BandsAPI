@@ -1,4 +1,6 @@
-# Awesome Project Build with TypeORM
+# BandAPI
+
+Made during my time as a student at Code Chrysalis in Tokyo!
 
 Steps to run this project:
 
