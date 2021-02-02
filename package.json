@@ -25,6 +25,6 @@
     "typeorm:migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
     "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
     "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
-    "heroku-postbuild": "cd bandapi && npm install && npm run build"
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   }
 }
