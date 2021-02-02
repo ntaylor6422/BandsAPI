@@ -4,18 +4,19 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   ManyToOne,
+  RelationId,
 } from 'typeorm';
-import { ObjectType, Field } from 'type-graphql';
+import { ObjectType, Field, Int, ID } from 'type-graphql';
 import Band from './Band';
 
 @Entity('comments')
 @ObjectType()
 export default class Comment extends BaseEntity {
-  @Field(() => String)
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @Field(() => ID)
+  @PrimaryGeneratedColumn()
+  readonly id: number;
 
-  @Field(() => Number)
+  @Field(() => Int)
   @Column()
   rating: number;
 
@@ -23,8 +24,11 @@ export default class Comment extends BaseEntity {
   @Column()
   comment: string;
 
-  @ManyToOne(() => Band, (band) => band.comments)
+  @Field(() => Band)
+  @ManyToOne(() => Band)
   band: Band;
+  @RelationId((comment: Comment) => comment.band)
+  bandId: number;
 
   @Field(() => Date)
   @Column()

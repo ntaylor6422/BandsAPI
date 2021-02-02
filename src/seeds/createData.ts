@@ -11,8 +11,9 @@ export default class CreateBands implements Seeder {
       .into(Band)
       .values([
         {
-          bandName: bands[0].bandName,
+          name: bands[0].name,
           dateFormed: new Date(bands[0].dateFormed),
+          comments: [],
         },
       ])
       .execute();

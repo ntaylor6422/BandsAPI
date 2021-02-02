@@ -5,22 +5,27 @@ import {
   OneToMany,
   BaseEntity,
 } from 'typeorm';
-import { ObjectType, Field } from 'type-graphql';
+import { ObjectType, Field, ID } from 'type-graphql';
 import Comment from './Comment';
+import { Lazy } from '../helper';
 
 @Entity('bands')
 @ObjectType()
 export default class Band extends BaseEntity {
-  @Field(() => String)
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @Field(() => ID)
+  @PrimaryGeneratedColumn()
+  readonly id: number;
 
   @Field(() => String)
   @Column()
-  bandName: string;
+  name: string;
 
-  @OneToMany(() => Comment, (comment) => comment.band)
-  comments: Comment[];
+  @Field(() => [Comment])
+  @OneToMany(() => Comment, (comment) => comment.band, {
+    lazy: true,
+    cascade: ['insert'],
+  })
+  comments: Lazy<Comment[]>;
 
   @Field(() => Date)
   @Column()

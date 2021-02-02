@@ -1,9 +1,10 @@
+import Band from 'entity/Band';
 import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export default class CreateBandInput {
+export default class CreateBandInput implements Partial<Band> {
   @Field()
-  bandName: string;
+  name: string;
 
   @Field()
   dateFormed: Date;

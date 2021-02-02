@@ -11,13 +11,12 @@ export default class BandResolver {
   }
 
   @Query(() => Band)
-  band(@Arg('bandName') bandName: string) {
-    return Band.findOne({ where: { bandName } });
+  band(@Arg('name') name: string) {
+    return Band.findOne({ where: { name } });
   }
 
   @Mutation(() => Band)
   async createBand(@Arg('data') data: CreateBandInput) {
-    // const date = new Date(data.dateFormed);
     const newBand = Band.create(data);
     await newBand.save();
     return newBand;
@@ -25,10 +24,10 @@ export default class BandResolver {
 
   @Mutation(() => Band)
   async updateBand(
-    @Arg('bandName') bandName: string,
+    @Arg('name') name: string,
     @Arg('data') data: UpdateBandInput
   ) {
-    const updatedBand = await Band.findOne({ where: { bandName } });
+    const updatedBand = await Band.findOne({ where: { name } });
     if (!updatedBand) throw new Error('Band not found');
     Object.assign(updatedBand, data);
     await updatedBand.save();
@@ -36,8 +35,8 @@ export default class BandResolver {
   }
 
   @Mutation(() => Boolean)
-  async deleteBand(@Arg('bandName') bandName: string) {
-    const removedBand = await Band.findOne({ where: { bandName } });
+  async deleteBand(@Arg('name') name: string) {
+    const removedBand = await Band.findOne({ where: { name } });
     if (!removedBand) throw new Error('Band not found');
     await removedBand.remove();
     return true;

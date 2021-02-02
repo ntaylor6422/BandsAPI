@@ -1,18 +1,18 @@
 [
   {
-    "bandName": "Led Zeppelin",
+    "name": "Led Zeppelin",
     "dateFormed": 1968
   },
   {
-    "bandName": "The Who",
+    "name": "The Who",
     "dateFormed": 1964
   },
   {
-    "bandName": "Metallica",
+    "name": "Metallica",
     "dateFormed": 1980
   },
   {
-    "bandName": "Crosby, Stills, Nash, and Young",
+    "name": "Crosby, Stills, Nash, and Young",
     "dateFormed": 1968
   }
 ]
