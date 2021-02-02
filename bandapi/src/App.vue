@@ -1,18 +1,33 @@
 <template>
-  <div>{{ allBands }}</div>
+  <v-app>
+    <v-navigation-drawer app> </v-navigation-drawer>
+    <v-app-bar app> </v-app-bar>
+    <v-main>
+      <Table
+        v-bind:allBands="allBands"
+        @addBand="addBand"
+        @editBand="editBand"
+      />
+    </v-main>
+    <v-footer app></v-footer>
+  </v-app>
 </template>
 
 <script>
+import Table from "./components/Table";
 export default {
-  name: "App",
+  name: "bandAPI",
   data: () => ({
     currentBand: "",
     allBands: [],
     fetchURL: "http://localhost:5000",
   }),
+  components: {
+    Table,
+  },
   methods: {
     fetchAllBands: async function() {
-      const query = ` 
+      const query = `
         query {
           bands {
             id
@@ -26,8 +41,10 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
       });
-      this.allBands = await fetchReq.json();
+      const jsondBands = await fetchReq.json();
+      this.allBands = jsondBands.data.bands;
     },
+    addBand: () => {},
   },
   created: function() {
     this.fetchAllBands();
